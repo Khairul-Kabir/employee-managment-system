@@ -10,6 +10,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './authentication/login/login.component';
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
+import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+ 
+const ngWizardConfig: NgWizardConfig = {
+  theme: THEME.default
+};
 
 
 @NgModule({
@@ -26,7 +31,8 @@ import { AddEmployeeComponent } from './employee/add-employee/add-employee.compo
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgWizardModule.forRoot(ngWizardConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
