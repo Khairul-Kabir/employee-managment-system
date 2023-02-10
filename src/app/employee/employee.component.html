@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card" *ngIf="!isAddEmployeeComponentVisable">
                 <div class="text-center">
-                    <h1>User</h1>
+                    <h1>Employee</h1><button class="btn btn-primary" (click)="openAddEmployee()">Add +</button> 
                 </div>
 
                 <table class="table table-striped">
@@ -42,7 +42,10 @@
                     </select>
                 </div>
             </div>
+            <div class="card">
+                <!-- *ngIf="isAddEmployeeComponentVisable" -->
+                <app-add-employee (backToEmployeeList)="backToEmployee($event)" *ngIf="isAddEmployeeComponentVisable"></app-add-employee> 
+            </div>
         </div>
     </div>
 </div>
-<app-add-employee></app-add-employee>

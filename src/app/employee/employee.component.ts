@@ -95,6 +95,7 @@ const COUNTRIES: Country[] = [
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
+  isAddEmployeeComponentVisable?: boolean;
   page = 1;
 	pageSize = 4;
 	collectionSize = COUNTRIES.length;
@@ -104,6 +105,7 @@ export class EmployeeComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.isAddEmployeeComponentVisable = false;
   }
   refreshCountries() {
 		this.countries = COUNTRIES.map((country, i) => ({ id: i + 1, ...country })).slice(
@@ -111,4 +113,10 @@ export class EmployeeComponent implements OnInit {
 			(this.page - 1) * this.pageSize + this.pageSize,
 		);
 	}
+  openAddEmployee(){
+    this.isAddEmployeeComponentVisable = true;
+  }
+  backToEmployee(backToEmployeeFlag:any):void{
+    this.isAddEmployeeComponentVisable = false;
+  }
 }
