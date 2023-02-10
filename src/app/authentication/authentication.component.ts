@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authentication',
@@ -7,24 +8,10 @@ import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./authentication.component.css']
 })
 export class AuthenticationComponent implements OnInit {
-  get getUserEmail(){
-    return this.loginForm.get('userEmail')
-  }
 
-  loginForm = new FormGroup({
-    userEmail: new FormControl('',[
-    Validators.required,
-    Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-  password: new FormControl('',[
-    Validators.required,
-    Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])
-  });
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-  }
-
-  login(){
-    alert('Login  done!');
   }
 
 }

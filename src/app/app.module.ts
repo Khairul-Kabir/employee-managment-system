@@ -8,13 +8,17 @@ import { EmployeeComponent } from './employee/employee.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './authentication/login/login.component';
+import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthenticationComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    LoginComponent,
+    AddEmployeeComponent
   ],
   imports: [
     BrowserModule,
