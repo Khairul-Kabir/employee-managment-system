@@ -55,8 +55,16 @@ export class AddEmployeeComponent implements OnInit {
       ],
     }
   };
-  basicFormSubmit(){
 
+  goToBasic(){
+    
+  }
+  goToSkill(){
+    this.basicFormSubmit();
+  }
+
+  basicFormSubmit(){
+    this.submittedBasicForm = true;
   }
   save(){
 

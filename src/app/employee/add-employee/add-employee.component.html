@@ -1,10 +1,10 @@
 <div class="container">
   <div class="card">
     <ul class="nav nav-pills nav-fill">
-      <li class="nav-item">
-        <a class="nav-link active">Basic Info</a>
+      <li class="nav-item" (click)="goToBasic()">
+        <a class="nav-link active" >Basic Info</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" (click)="goToSkill()">
         <a [className]="'nav-link active'">Skill Info</a>
       </li>
       <li class="nav-item">
@@ -12,64 +12,128 @@
       </li>
     </ul>
   </div>
+  <div class="card" id="basic">
+    <form class="row g-3" [formGroup]="basicForm" (ngSubmit)="basicFormSubmit()">
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="inputEmail4" formControlName="firstName" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.firstName.errors }">
+        <div *ngIf="submittedBasicForm && basicFormControl.firstName.errors" class="invalid-feedback">
+          <div *ngIf="basicFormControl.firstName.errors.required">First name is required</div>
+      </div>
+      </div>
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="inputEmail4" formControlName="lastName" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.lastName.errors }">
+        <div *ngIf="submittedBasicForm && basicFormControl.lastName.errors" class="invalid-feedback">
+          <div *ngIf="basicFormControl.lastName.errors.required">last name is required</div>
+      </div>
+    </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Date of Birth</label>
+        <input type="date" class="form-control" id="inputPassword4" formControlName="dateOfBirth" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.dateOfBirth.errors }">
+        <div *ngIf="submittedBasicForm && basicFormControl.dateOfBirth.errors" class="invalid-feedback">
+          <div *ngIf="basicFormControl.dateOfBirth.errors.required">Date of birth is required</div>
+      </div>
+    </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Phone</label>
+        <input type="text" class="form-control" id="inputPassword4" formControlName="phone" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.phone.errors}">
+        <div *ngIf="submittedBasicForm && basicFormControl.phone.errors" class="invalid-feedback">
+          <div *ngIf="basicFormControl.phone.errors.required">Phone no is required</div>
+          <div *ngIf="basicFormControl.phone.errors.minLength">Phone no minimum 11 digit</div>
+      </div>
+    </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Gander</label>
+        <select id="inputState" class="form-select" formControlName="gander" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.gander.errors}">
+          <option value="Choose.." selected>Choose...</option>
+          <option value="Male"> Male </option>
+          <option value="Female"> Female </option>
+          <option value="Others"> Others </option>
+        </select>
+        <div *ngIf="submittedBasicForm && basicFormControl.gander.errors" class="invalid-feedback">
+          <div *ngIf="basicFormControl.gander.errors.required">Gander is required</div>
+      </div>
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputPassword4" formControlName="email" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.email.errors }">
+        <div *ngIf="submittedBasicForm && basicFormControl.email.errors" class="invalid-feedback">
+          <div *ngIf="basicFormControl.email.errors.required">Email is required</div>
+          <div *ngIf="basicFormControl.email.errors.email">Email must be a valid email address</div>
+      </div>
+      </div>
+    </form>
+  </div>
+  <div class="card" id="skill">
+    <form class="row g-3" [formGroup]="skillForm">
+      <div class="col-md-4">
+        <label for="inputCity" class="form-label">Skill Name 1</label>
+        <input type="text" class="form-control" id="inputCity">
+      </div>
+      <div class="col-md-4">
+        <label for="inputZip" class="form-label">Year of experience</label>
+        <input type="text" class="form-control" id="inputZip">
+      </div>
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">Level</label>
+        <select id="inputState" class="form-select">
+          <option selected>Choose...</option>
+          <option value="1"> 1 </option>
+          <option value="1"> 2 </option>
+          <option value="1"> 3 </option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="inputCity" class="form-label">Skill Name 2</label>
+        <input type="text" class="form-control" id="inputCity">
+      </div>
+      <div class="col-md-4">
+        <label for="inputZip" class="form-label">Year of experience</label>
+        <input type="text" class="form-control" id="inputZip">
+      </div>
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">Level</label>
+        <select id="inputState" class="form-select">
+          <option selected>Choose...</option>
+          <option selected>Choose...</option>
+          <option value="1"> 1 </option>
+          <option value="1"> 2 </option>
+          <option value="1"> 3 </option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="inputCity" class="form-label">Skill Name 3</label>
+        <input type="text" class="form-control" id="inputCity">
+      </div>
+      <div class="col-md-4">
+        <label for="inputZip" class="form-label">Year of experience</label>
+        <input type="text" class="form-control" id="inputZip">
+      </div>
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">Level</label>
+        <select id="inputState" class="form-select">
+          <option selected>Choose...</option>
+          <option selected>Choose...</option>
+          <option value="1"> 1 </option>
+          <option value="1"> 2 </option>
+          <option value="1"> 3 </option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="card" id="preview"></div>
 </div>
-<div class="container py-5">
+<button class="btn btn-primary" (click)="backToEmployee()">Back -></button> 
+
+
+<!-- <div class="container py-5">
     <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
     
         <ng-wizard-step id="wizard" [title]="'Employee Basic Information'" [description]="'This section contains employee basic information'" [canEnter]="isValidTypeBoolean" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
         <div class="container">
             <div class="card">
-                <form class="row g-3" [formGroup]="basicForm" (ngSubmit)="basicFormSubmit()">
-                    <div class="col-md-6">
-                      <label for="inputEmail4" class="form-label">First Name</label>
-                      <input type="text" class="form-control" id="inputEmail4" formControlName="firstName" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.firstName.errors }">
-                      <div *ngIf="submittedBasicForm && basicFormControl.firstName.errors" class="invalid-feedback">
-                        <div *ngIf="basicFormControl.firstName.errors.required">First name is required</div>
-                    </div>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="inputEmail4" class="form-label">Last Name</label>
-                      <input type="text" class="form-control" id="inputEmail4" formControlName="lastName" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.lastName.errors }">
-                      <div *ngIf="submittedBasicForm && basicFormControl.lastName.errors" class="invalid-feedback">
-                        <div *ngIf="basicFormControl.lastName.errors.required">last name is required</div>
-                    </div>
-                  </div>
-                    <div class="col-md-6">
-                      <label for="inputPassword4" class="form-label">Date of Birth</label>
-                      <input type="date" class="form-control" id="inputPassword4" formControlName="dateOfBirth" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.dateOfBirth.errors }">
-                      <div *ngIf="submittedBasicForm && basicFormControl.dateOfBirth.errors" class="invalid-feedback">
-                        <div *ngIf="basicFormControl.dateOfBirth.errors.required">Date of birth is required</div>
-                    </div>
-                  </div>
-                    <div class="col-md-6">
-                      <label for="inputPassword4" class="form-label">Phone</label>
-                      <input type="text" class="form-control" id="inputPassword4" formControlName="phone" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.phone.errors}">
-                      <div *ngIf="submittedBasicForm && basicFormControl.phone.errors" class="invalid-feedback">
-                        <div *ngIf="basicFormControl.phone.errors.required">Phone no is required</div>
-                        <div *ngIf="basicFormControl.phone.errors.minLength">Phone no minimum 11 digit</div>
-                    </div>
-                  </div>
-                    <div class="col-md-6">
-                      <label for="inputPassword4" class="form-label">Gander</label>
-                      <select id="inputState" class="form-select" formControlName="gander" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.gander.errors}">
-                        <option value="Choose.." selected>Choose...</option>
-                        <option value="Male"> Male </option>
-                        <option value="Female"> Female </option>
-                        <option value="Others"> Others </option>
-                      </select>
-                      <div *ngIf="submittedBasicForm && basicFormControl.gander.errors" class="invalid-feedback">
-                        <div *ngIf="basicFormControl.gander.errors.required">Gander is required</div>
-                    </div>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="inputPassword4" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="inputPassword4" formControlName="email" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.email.errors }">
-                      <div *ngIf="submittedBasicForm && basicFormControl.email.errors" class="invalid-feedback">
-                        <div *ngIf="basicFormControl.email.errors.required">Email is required</div>
-                        <div *ngIf="basicFormControl.email.errors.email">Email must be a valid email address</div>
-                    </div>
-                    </div>
-                  </form>
+                
             </div>
         </div>
         </ng-wizard-step>
@@ -77,61 +141,7 @@
         <ng-wizard-step id="wizard" [title]="'Employee Skill Information'" [description]="'This section contains employee skill information'">
             <div class="container">
                 <div class="card">
-                    <form class="row g-3" [formGroup]="skillForm">
-                        <div class="col-md-4">
-                          <label for="inputCity" class="form-label">Skill Name 1</label>
-                          <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="col-md-4">
-                          <label for="inputZip" class="form-label">Year of experience</label>
-                          <input type="text" class="form-control" id="inputZip">
-                        </div>
-                        <div class="col-md-4">
-                          <label for="inputState" class="form-label">Level</label>
-                          <select id="inputState" class="form-select">
-                            <option selected>Choose...</option>
-                            <option value="1"> 1 </option>
-                            <option value="1"> 2 </option>
-                            <option value="1"> 3 </option>
-                          </select>
-                        </div>
-                        <div class="col-md-4">
-                          <label for="inputCity" class="form-label">Skill Name 2</label>
-                          <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="col-md-4">
-                          <label for="inputZip" class="form-label">Year of experience</label>
-                          <input type="text" class="form-control" id="inputZip">
-                        </div>
-                        <div class="col-md-4">
-                          <label for="inputState" class="form-label">Level</label>
-                          <select id="inputState" class="form-select">
-                            <option selected>Choose...</option>
-                            <option selected>Choose...</option>
-                            <option value="1"> 1 </option>
-                            <option value="1"> 2 </option>
-                            <option value="1"> 3 </option>
-                          </select>
-                        </div>
-                        <div class="col-md-4">
-                          <label for="inputCity" class="form-label">Skill Name 3</label>
-                          <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="col-md-4">
-                          <label for="inputZip" class="form-label">Year of experience</label>
-                          <input type="text" class="form-control" id="inputZip">
-                        </div>
-                        <div class="col-md-4">
-                          <label for="inputState" class="form-label">Level</label>
-                          <select id="inputState" class="form-select">
-                            <option selected>Choose...</option>
-                            <option selected>Choose...</option>
-                            <option value="1"> 1 </option>
-                            <option value="1"> 2 </option>
-                            <option value="1"> 3 </option>
-                          </select>
-                        </div>
-                      </form>
+                    
                 </div>
             </div>
         </ng-wizard-step>
@@ -140,5 +150,5 @@
         <span>Step 3 content</span>
         </ng-wizard-step>
     </ng-wizard>
-    <button class="btn btn-primary" (click)="backToEmployee()">Back -></button> 
-</div>
+    
+</div> -->
