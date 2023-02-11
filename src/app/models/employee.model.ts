@@ -1,7 +1,17 @@
 export interface Employee {
-    name: string;
+    firstName: string;
+    lastName: string;
+    dateOfBirth: string;
     phone: string;
+    gander: string;
     email: string;
     password: string;
+    skills: EmployeeSkill[];
+  }
+
+  export interface EmployeeSkill{
+    skillName: string;
+    yearOfExperience: number;
+    skillLevel: number;
   }
   

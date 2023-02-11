@@ -3,3 +3,9 @@
     width: 100%;
     padding: 40px;
 }
+.nav-item{
+    width: 33% !important;
+}
+.active{
+    color:red
+}
