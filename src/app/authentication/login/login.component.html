@@ -6,33 +6,24 @@
                     <h1>Login</h1>
                 </div>
                 <form [formGroup]="loginForm" (ngSubmit)="login()">
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email address</label>
-                      </div>
-                      <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Password</label>
-                      </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="userEmail" placeholder="Enter email"/>
-                    
-
-                            <!-- <input [class.is-invalid]="getUserEmail.invalid && getUserEmail.touched" type="email" class="form-control" formControlName="userEmail" />
-                      
-                            <div *ngIf="(getUserEmail.invalid && getUserEmail.touched) || getUserEmail.dirty">
-                              <small *ngIf="getUserEmail.errors?.required" class="text-danger">Primary email is required</small>
-                              <small *ngIf="getUserEmail.errors?.pattern" class="text-danger">Please provide a valid email address</small>
-                            </div>                    -->
+                        <label>Email</label>
+                        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginFormControl.email.errors }"/>
+                        <div *ngIf="submitted && loginFormControl.email.errors" class="invalid-feedback">
+                            <div *ngIf="loginFormControl.email.errors.required">Email is required</div>
+                            <div *ngIf="loginFormControl.email.errors.email">Email must be a valid email address</div>
                         </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
-                            formControlName="password">
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <label>Password</label>
+                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginFormControl.password.errors }" />
+                        <div *ngIf="submitted && loginFormControl.password.errors" class="invalid-feedback">
+                            <div *ngIf="loginFormControl.password.errors.required">Password is required</div>
+                            <div *ngIf="loginFormControl.password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Login</button>
                     </div>
                 </form>
             </div>

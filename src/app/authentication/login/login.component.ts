@@ -9,26 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  get getUserEmail(){
-    return this.loginForm.get('userEmail')
-  }
+  loginForm!: FormGroup;
+  submitted = false;
 
-  loginForm = new FormGroup({
-    userEmail: new FormControl('',[
-    Validators.required,
-    Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-  password: new FormControl('',[
-    Validators.required,
-    Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])
-  });
-
-  constructor(private router: Router) { }
+  constructor(private router: Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      email: ['kabir@gmail.com', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+  });
   }
 
   login(){
     this.router.navigate(['/employee']);
+  }
+
+  get loginFormControl() { return this.loginForm.controls; }
+
+  onSubmit() {
+      this.submitted = true;
+
+      if (this.loginForm.invalid) {
+          return;
+      }
+
+      //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value))
+      this.router.navigate(['/employee']);
   }
 
 }

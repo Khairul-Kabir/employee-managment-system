@@ -6,17 +6,17 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: hsla(205, 46%, 30%, 1);
-    background: linear-gradient(90deg, hsla(205, 46%, 30%,1) 0%, hsla(260,29%36%,1)100%);
+    background: rgb(172, 205, 228);
+    background: linear-gradient(90deg, rgb(89, 138, 173) 0%, hsla(260,29%36%,1)100%);
 }
 
-/* .card ,h6{
+.card ,h6{
     color: #fff;
 }
 
 label{
     color: #fff;
-} */
+}
 button{
 	width: 60%;
 	height: 40px;
