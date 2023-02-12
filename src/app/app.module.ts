@@ -11,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './authentication/login/login.component';
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
-import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './shared/spinner.component';
 
@@ -38,7 +37,6 @@ const ngWizardConfig: NgWizardConfig = {
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSpinnerModule,
     ToastrModule.forRoot(),
     NgWizardModule.forRoot(ngWizardConfig)
   ],

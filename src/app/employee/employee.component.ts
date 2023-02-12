@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Employee } from '../models/employee.model';
 import { EmployeeStore } from '../store/employee.store';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { EmployeeStore } from '../store/employee.store';
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css']
 })
+
 export class EmployeeComponent implements OnInit {
 	employeeList!: Employee[];
 	isAddEmployeeComponentVisable?: boolean;
@@ -19,11 +21,13 @@ export class EmployeeComponent implements OnInit {
 	countries?: Employee[];
 	closeResult = '';
 	employeePreview?: Employee;
+	loginUser?:any;
 
 	constructor(
 		private router: Router,
 		private modalService: NgbModal,
 		private activatedRoute: ActivatedRoute,
+		private toastr: ToastrService,
 		private employeeStore : EmployeeStore) {
 	}
 
@@ -31,6 +35,11 @@ export class EmployeeComponent implements OnInit {
     	this.isAddEmployeeComponentVisable = false;
 		this.getAllEmployees();
 		this.collectionSize = this.employeeList.length;
+		this.loginUser = localStorage.getItem('loginUserInfo');
+		if(this.loginUser==''){
+			this.toastr.warning('Login first and try again', 'Warning !');
+			this.Logout();
+		}
 	}
 
 	getAllEmployees(){
@@ -48,6 +57,7 @@ export class EmployeeComponent implements OnInit {
     this.isAddEmployeeComponentVisable = false;
   }
   Logout(){
+	localStorage.setItem('loginUserInfo','');
 	this.router.navigate(['/login']);
   }
   open(content: any,employee: Employee) {

@@ -49,7 +49,7 @@ export class AddEmployeeComponent implements OnInit {
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       dateOfBirth: ['', [Validators.required]],
-      phone: [null, [Validators.required, Validators.minLength(11),Validators.maxLength(11)]],
+      phone: ['', [Validators.required, Validators.pattern('(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})'), Validators.minLength(11),Validators.maxLength(11)]],
       gander: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]]
     });

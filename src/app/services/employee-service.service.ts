@@ -39,6 +39,58 @@ export class EmployeeServiceService {
           yearOfExperience: 5,
           skillLevel:"2"
         },
+        
+      ]
+    },
+    {
+      firstName: "Amir",
+      lastName: "Khan",
+      dateOfBirth: "01-12-1680",
+      phone: "0187452639",
+      gander: "Male",
+      email: "j@gmail.com",
+      password: "123456",
+      skills: [
+        {
+          skillName:"Skill 14",
+          yearOfExperience: 5,
+          skillLevel:"3"
+        },
+        
+      ]
+    },
+    {
+      firstName: "Tom",
+      lastName: "Mark",
+      dateOfBirth: "01-12-1785",
+      phone: "0136587415",
+      gander: "Male",
+      email: "j@gmail.com",
+      password: "123456",
+      skills: [
+        {
+          skillName:"Skill 1",
+          yearOfExperience: 5,
+          skillLevel:"2"
+        },
+        
+      ]
+    },
+    {
+      firstName: "Merry",
+      lastName: "Jen",
+      dateOfBirth: "01-12-1698",
+      phone: "0148745262",
+      gander: "Female",
+      email: "j@gmail.com",
+      password: "123456",
+      skills: [
+        {
+          skillName:"Skill 11",
+          yearOfExperience: 5,
+          skillLevel:"2"
+        },
+        
       ]
     },
     
