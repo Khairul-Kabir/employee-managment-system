@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeStore } from 'src/app/store/employee.store';
 import { Employee } from 'src/app/models/employee.model';
+import { NgxSpinnerService } from "ngx-spinner";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private employeeStore: EmployeeStore
+    private employeeStore: EmployeeStore,
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService
     
     ) { }
 
@@ -31,6 +35,7 @@ export class LoginComponent implements OnInit {
   get loginFormControl() { return this.loginForm.controls; }
 
   login() {
+    this.spinner.show();
       this.submitted = true;
       if (this.loginForm.invalid) {
           return;
@@ -41,7 +46,16 @@ export class LoginComponent implements OnInit {
             next: (response:any)=>{
               if(response.data!==undefined){
                 this.router.navigate(['/employee']);
+                this.spinner.hide();
+                this.toastr.success('Login Successful', 'Success !');
+              }else{
+                this.toastr.error('Login failed', 'Failed !');
               }
+            },
+            error:(error)=>{
+              //console.log(error);
+              this.toastr.error(error, 'Login failed!');
+              this.spinner.hide();
             }
           });
       }

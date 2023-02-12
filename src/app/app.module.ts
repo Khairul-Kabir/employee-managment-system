@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
@@ -11,6 +11,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './authentication/login/login.component';
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { ToastrModule } from 'ngx-toastr';
+import { SpinnerComponent } from './shared/spinner.component';
+
  
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default
@@ -23,15 +27,19 @@ const ngWizardConfig: NgWizardConfig = {
     AuthenticationComponent,
     EmployeeComponent,
     LoginComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
+    ToastrModule.forRoot(),
     NgWizardModule.forRoot(ngWizardConfig)
   ],
   providers: [],
