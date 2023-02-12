@@ -20,7 +20,7 @@ export class EmployeeServiceService {
         {
           skillName:"Skill 1",
           yearOfExperience: 5,
-          skillLevel:2
+          skillLevel:"2"
         },
       ]
     },
@@ -37,16 +37,31 @@ export class EmployeeServiceService {
         {
           skillName:"Skill 1",
           yearOfExperience: 5,
-          skillLevel:2
+          skillLevel:"2"
         },
       ]
     },
     
   ]
+  employeeTabInfo!: Employee;
+
   constructor() { }
 
   getAllEmployee(): Observable<Employee[]> {
     return of(this.employee).pipe(delay(1000));
+  }
+
+  addEmployeeTempInfo(employee: Employee): Observable<Employee>{
+    this.employeeTabInfo=employee;
+    return of(this.employeeTabInfo).pipe(delay(1000));
+  }
+  getEmployeeTempInfo(): Observable<Employee>{
+    return of(this.employeeTabInfo).pipe(delay(10));
+  }
+
+  addEmployee(newEmployee: Employee): Observable<Employee> {
+    this.employee.unshift(newEmployee);
+    return of(newEmployee).pipe(delay(1000));
   }
 
   searchEmployeeUsingEmailAndPassword(employee: Employee): Observable<any> {

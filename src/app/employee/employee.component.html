@@ -50,7 +50,7 @@
             </div>
             <div class="card">
                 <!-- *ngIf="isAddEmployeeComponentVisable" -->
-                <app-add-employee (backToEmployeeList)="backToEmployee($event)"></app-add-employee> 
+                <app-add-employee (backToEmployeeList)="backToEmployee($event)" *ngIf="isAddEmployeeComponentVisable"></app-add-employee> 
             </div>
         </div>
     </div>

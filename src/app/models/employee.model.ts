@@ -12,6 +12,6 @@ export interface Employee {
   export interface EmployeeSkill{
     skillName: string;
     yearOfExperience: number;
-    skillLevel: number;
+    skillLevel: string;
   }
   

@@ -57,38 +57,17 @@ export class EmployeeStore extends ComponentStore<EmployeeState>{
         return this.employeeService.getAllEmployee()
     }
 
-//   readonly searchEmployeeUsingEmailAndPassword = this.effect<Employee>((employee$) =>
-//     employee$.pipe(
-//         concatMap((employee) =>
-//             this.employeeService.searchEmployeeUsingEmailAndPassword(employee).pipe(
-//             this.toast.observe({
-//                 loading: 'Adding contact...',
-//                 success: 'Contact added!',
-//                 error: 'Could not add.',
-//             }),
-//             catchError(() => EMPTY)
-//             )
-//         )
-//         )
-//   );
-
   searchEmployeeUsingEmailAndPassword(employee: Employee){
     return this.employeeService.searchEmployeeUsingEmailAndPassword(employee)
   }
+
+  addEmployee(newEmployee: Employee)  {
+    return this.employeeService.addEmployee(newEmployee)
+  }
+  getEmployeeTempInfo()  {
+    return this.employeeService.getEmployeeTempInfo()
+  }
+  addEmployeeTempInfo(newEmployee: Employee)  {
+    return this.employeeService.addEmployeeTempInfo(newEmployee)
+  }
 }
-
-
-
-// .subscribe({
-//     next: (response:Employee) => {
-//       if(response!=null){
-//         console.log(response);
-//         result = response;
-//         this.router.navigate(['/employee']);
-//       }else{
-//         //this.toastr.warning("Update failed", "Update");
-//       }
-//     console.log(response);
-//     }
-// });
-// return result;
