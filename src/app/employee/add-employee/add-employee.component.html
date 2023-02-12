@@ -1,11 +1,9 @@
 <div class="wrapper">
   <div class="content-wrapper">
     <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <button class="btn btn-secondary" (click)="backToEmployee()">Back to List</button> 
-          </div>
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <button class="btn btn-secondary" (click)="backToEmployee()">Back to List</button> 
         </div>
       </div>
     </section>
@@ -17,29 +15,25 @@
 </div>
 
 
-<div class="card" >
+<div class="card">
   <section class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-12">
-          <ul class="nav nav-tabs">
-            <li class="nav-item" (click)="goToBasic()">
-              <a [className]="currentSteps=='Basic'? 'nav-link active':'nav-link' ">Basic Info </a>
-            </li>
-            <li class="nav-item" (click)="goToSkill()">
-              <a [className]="currentSteps=='Skill'? 'nav-link active':'nav-link'">Skill Info</a>
-              
-            </li>
-            <li class="nav-item" (click)="goToPreview()">
-              <a [className]="currentSteps=='Preview'? 'nav-link active':'nav-link'">Preview</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div class="col-sm-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item" (click)="goToBasic()">
+          <a [className]="currentSteps=='Basic'? 'nav-link active':'nav-link' ">Basic Info </a>
+        </li>
+        <li class="nav-item" (click)="goToSkill()">
+          <a [className]="currentSteps=='Skill'? 'nav-link active':'nav-link'">Skill Info</a>
+          
+        </li>
+        <li class="nav-item" (click)="goToPreview()">
+          <a [className]="currentSteps=='Preview'? 'nav-link active':'nav-link'">Preview</a>
+        </li>
+      </ul>
     </div>
   </section>
 </div>
-<div class="card" id="basic" *ngIf="currentSteps=='Basic'">
+<div class="card" id="basic" *ngIf="currentSteps=='Basic'" style="padding: 10px;">
   <form class="row g-3" [formGroup]="basicForm" (ngSubmit)="basicFormSubmit()">
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">First Name</label>
@@ -91,9 +85,12 @@
         <div *ngIf="basicFormControl.email.errors.email">Email must be a valid email address</div>
     </div>
     </div>
+    <div class="col-md-12 float-right">
+      <button type="button" class="btn btn-secondary float-right" (click)="goToSkill()">Next</button>
+    </div>
   </form>
 </div>
-<div class="card" id="skill" *ngIf="currentSteps=='Skill'">
+<div class="card" id="skill" *ngIf="currentSteps=='Skill'" style="padding: 10px;">
   <form class="row g-3" [formGroup]="skillForm" (ngSubmit)="skillFormSubmit()">
     <div class="col-md-4">
       <label for="inputCity" class="form-label">Skill Name</label>
@@ -104,7 +101,7 @@
     </div>
     <div class="col-md-4">
       <label for="inputZip" class="form-label">Year of experience</label>
-      <input type="text" class="form-control" formControlName="yearOfExperience" [ngClass]="{ 'is-invalid': submittedSkillForm && skillFormControl.yearOfExperience.errors }">
+      <input type="number" class="form-control" formControlName="yearOfExperience" [ngClass]="{ 'is-invalid': submittedSkillForm && skillFormControl.yearOfExperience.errors }">
       <div *ngIf="submittedSkillForm && skillFormControl.yearOfExperience.errors" class="invalid-feedback">
         <div *ngIf="skillFormControl.yearOfExperience.errors.required">Year of experience is required</div>
     </div>
@@ -121,7 +118,10 @@
         <div *ngIf="skillFormControl.skillLevel.errors.required">Skill Level is required</div>
     </div>
     </div>
-    
+    <div class="col-md-12 float-right">
+      <button type="button" class="btn btn-secondary float-right ml-2" (click)="goToPreview()">Next</button>
+      <button type="button" class="btn btn-secondary float-right ml-2" (click)="goToBasic()">Previous</button>
+    </div>
     <!-- <div class="col-md-4">
       <label for="inputCity" class="form-label">Skill Name 2</label>
       <input type="text" class="form-control" id="inputCity">
@@ -160,7 +160,7 @@
     </div> -->
   </form>
 </div>
-<div class="card" id="preview" *ngIf="currentSteps=='Preview'">
+<div class="card" id="preview" *ngIf="currentSteps=='Preview'" style="padding: 10px;">
   <div class="details-tab">
     <div class="d-flex flex-row align-items-center mb-2">
       <h3 class="card-title media-body">Basic Information</h3>
@@ -214,7 +214,8 @@
         </div>
       </div>
   </div>
- <div class="form-group text-center">
-  <button class="btn btn-primary save-button" (click)="save()">Save Information</button>
- </div>
+  <div class="col-md-12 float-right">
+    <button type="button" class="btn btn-secondary float-left" (click)="goToSkill()">Previous</button>
+    <button class="btn btn-primary float-right" (click)="save()">Save Information</button>
+  </div>
 </div>

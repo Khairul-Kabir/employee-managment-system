@@ -4,14 +4,11 @@
         <div class="card-header p-0 pt-1">
           <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
             <li class="pt-2 px-3"><h3 class="card-title">EMS</h3></li>
-            <div class="text-right">
-                <li class="pt-3 px-3"><h5 class="card-title">Logout</h5></li>
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                  Logout
-                </a>
-              </li>
+          </ul>
+          <ul class="nav justify-content-end">
+            <li class="nav-item" href="#" (click)="Logout()">
+              <a style="cursor: pointer;" class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Logout</a>
+            </li>
           </ul>
         </div>
         <div class="card-body">
@@ -62,24 +59,12 @@
                                                           <td>{{ employee.phone}}</td>
                                                           <td>{{ employee.email }}</td>
                                                           <td>
-                                                              <button class="btn btn-warning">View</button>
-                                                              <button class="btn btn-danger ml-2">Delete</button> 
+                                                              <button class="btn btn-warning" (click)="open(content,employee)">View</button>
+                                                              <button class="btn btn-danger ml-2" disabled>Delete</button> 
                                                           </td>
                                                       </tr>
                                                   </tbody>
                                               </table>
-                                              <div class="d-flex justify-content-between p-2">
-                                                  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                                                      (pageChange)="refreshCountries()">
-                                                  </ngb-pagination>
-                              
-                                                  <select class="form-select" style="width: auto" [(ngModel)]="pageSize"
-                                                      (ngModelChange)="refreshCountries()">
-                                                      <option [ngValue]="5">5 items per page</option>
-                                                      <option [ngValue]="10">10 items per page</option>
-                                                      <option [ngValue]="15">15 items per page</option>
-                                                  </select>
-                                              </div>
                                           </div>
                                       </div>
                                     </div>
@@ -96,3 +81,70 @@
       </div>
     </div>
   </div>
+  
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile Info</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="mb-6">
+          <div class="details-tab">
+            <div class="d-flex flex-row align-items-center mb-2">
+              <h3 class="card-title media-body">Basic Information</h3>
+            </div>
+            <div class="row view-basic-card">
+                <div class="col-12 col-md-6 col-lg-3">
+                  <label class="pmd-list-subtitle"><b>First Name</b></label>
+                  <p class="pmd-list-title">{{employeePreview?.firstName}}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                  <label class="pmd-list-subtitle"><b>Last Name</b></label>
+                  <p class="pmd-list-title">{{employeePreview?.lastName}}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                  <label class="pmd-list-subtitle"><b>Date of Birth</b></label>
+                  <p class="pmd-list-title">{{employeePreview?.dateOfBirth}}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                  <label class="pmd-list-subtitle"><b>Phone</b></label>
+                  <p class="pmd-list-title"><a href={{employeePreview?.phone}} title=employeePreview?.phone>{{employeePreview?.phone}}</a></p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                  <label class="pmd-list-subtitle"><b>Personal Email</b></label>
+                  <p class="pmd-list-title"><a href="mailto:{{employeePreview?.email}}" title=employeePreview?.email>{{employeePreview?.email}}</a></p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                  <label class="pmd-list-subtitle"><b>Gender</b></label>
+                  <p class="pmd-list-title">{{employeePreview?.gander}}</p>
+                </div>
+              </div>
+          </div>
+        
+          <!-- Employee Information -->
+          <div class="details-tab">
+            <div class="d-flex flex-row align-items-center mb-2">
+              <h3 class="card-title media-body">Skill Information</h3>
+            </div>
+            <!-- View Card -->
+            <div class="row view-employee-card" *ngFor="let skill of employeePreview?.skills">
+                <div class="col-12 col-md-6 col-lg-3">
+                  <label class="pmd-list-subtitle"><b>Skill Name</b></label>
+                  <p class="pmd-list-title">{{skill.skillName}}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                  <label class="pmd-list-subtitle"><b>Year of experience</b></label>
+                  <p class="pmd-list-title">{{skill.yearOfExperience}}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                  <label class="pmd-list-subtitle"><b>Level</b></label>
+                  <p class="pmd-list-title">{{skill.skillLevel}}</p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+  

@@ -53,7 +53,7 @@ export class EmployeeServiceService {
 
   addEmployeeTempInfo(employee: Employee): Observable<Employee>{
     this.employeeTabInfo=employee;
-    return of(this.employeeTabInfo).pipe(delay(1000));
+    return of(this.employeeTabInfo).pipe(delay(100));
   }
   getEmployeeTempInfo(): Observable<Employee>{
     return of(this.employeeTabInfo).pipe(delay(10));

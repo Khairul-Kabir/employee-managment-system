@@ -4,6 +4,8 @@ import { of } from 'rxjs';
 import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
 import { EmployeeStore } from 'src/app/store/employee.store';
 import { Employee, EmployeeSkill } from 'src/app/models/employee.model';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-add-employee',
@@ -37,7 +39,8 @@ export class AddEmployeeComponent implements OnInit {
  
   constructor(
     private formBuilder: FormBuilder,
-    private employeeStore: EmployeeStore
+    private employeeStore: EmployeeStore,
+    private toastr: ToastrService
     ){
     
   }
@@ -130,6 +133,7 @@ export class AddEmployeeComponent implements OnInit {
     .subscribe({
       next: (response:Employee)=>{
       if(response!==undefined){
+        this.toastr.success('Save Successful', 'Success !');
          this.backToEmployee();
       }
     }

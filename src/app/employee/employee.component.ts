@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Employee } from '../models/employee.model';
 import { EmployeeStore } from '../store/employee.store';
 
@@ -16,24 +17,22 @@ export class EmployeeComponent implements OnInit {
 	pageSize = 5;
 	collectionSize = 1;
 	countries?: Employee[];
+	closeResult = '';
+	employeePreview?: Employee;
 
 	constructor(
+		private router: Router,
+		private modalService: NgbModal,
 		private activatedRoute: ActivatedRoute,
 		private employeeStore : EmployeeStore) {
-		this.refreshCountries();
 	}
 
 	ngOnInit(): void {
     	this.isAddEmployeeComponentVisable = false;
 		this.getAllEmployees();
-		//this.collectionSize = this.employeeList.length;
+		this.collectionSize = this.employeeList.length;
 	}
-	refreshCountries() {
-		// this.countries = this.employeeList.map((country, i) => ({ id: i + 1, ...country })).slice(
-		// 	(this.page - 1) * this.pageSize,
-		// 	(this.page - 1) * this.pageSize + this.pageSize,
-		// );
-  }
+
 	getAllEmployees(){
 		this.activatedRoute.data.subscribe(data =>console.log(data));
 
@@ -48,4 +47,20 @@ export class EmployeeComponent implements OnInit {
   backToEmployee(backToEmployeeFlag:any):void{
     this.isAddEmployeeComponentVisable = false;
   }
+  Logout(){
+	this.router.navigate(['/login']);
+  }
+  open(content: any,employee: Employee) {
+	this.modalService.open(content, { size: 'lg' });
+		this.employeePreview = employee;
+	}
+	private getDismissReason(reason: any): string {
+		if (reason === ModalDismissReasons.ESC) {
+			return 'by pressing ESC';
+		} else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+			return 'by clicking on a backdrop';
+		} else {
+			return `with: ${reason}`;
+		}
+	}
 }
