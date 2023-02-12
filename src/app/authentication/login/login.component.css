@@ -1,6 +1,6 @@
 .card{
     border: none;
-    width: 500px;
+    width: 400px;
     padding: 40px;
     position: absolute;
     top: 50%;
@@ -24,7 +24,7 @@ button{
 	justify-content: center;
 	display: block;
 	color: #fff;
-	background: #eb9514;
+	/* background: #eb9514; */
 	font-size: 1em;
 	font-weight: bold;
 	margin-top: 20px;

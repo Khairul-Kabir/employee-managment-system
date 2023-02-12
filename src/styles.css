@@ -4,5 +4,5 @@
 @import '~ng-wizard/themes/ng_wizard_theme_circles.min.css';
 @import '~ng-wizard/themes/ng_wizard_theme_dots.min.css';
 body {
-    background-color: rgb(224, 235, 225);
+    background-color: #e9ecef;
 }

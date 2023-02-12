@@ -1,32 +1,34 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="text-center">
-                    <h1>Login</h1>
-                </div>
-                <form [formGroup]="loginForm" (ngSubmit)="login()">
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginFormControl.email.errors }"/>
-                        <div *ngIf="submitted && loginFormControl.email.errors" class="invalid-feedback">
-                            <div *ngIf="loginFormControl.email.errors.required">Email is required</div>
-                            <div *ngIf="loginFormControl.email.errors.email">Email must be a valid email address</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginFormControl.password.errors }" />
-                        <div *ngIf="submitted && loginFormControl.password.errors" class="invalid-feedback">
-                            <div *ngIf="loginFormControl.password.errors.required">Password is required</div>
-                            <div *ngIf="loginFormControl.password.errors.minlength">Password must be at least 6 characters</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary">Login</button>
-                    </div>
-                </form>
+
+<div class="login-box">
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <p class="h3"><b>Employee</b> Managment</p>
+    </div>
+    <div class="card-body">
+        <div class="text-center">
+            <p class="login-box-msg">Sign in to start your session</p>
+        </div>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginFormControl.email.errors }"/>
+            <div *ngIf="submitted && loginFormControl.email.errors" class="invalid-feedback">
+                <div *ngIf="loginFormControl.email.errors.required">Email is required</div>
+                <div *ngIf="loginFormControl.email.errors.email">Email must be a valid email address</div>
             </div>
         </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginFormControl.password.errors }" />
+            <div *ngIf="submitted && loginFormControl.password.errors" class="invalid-feedback">
+                <div *ngIf="loginFormControl.password.errors.required">Password is required</div>
+                <div *ngIf="loginFormControl.password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary btn-block">Login</button>
+        </div>
+        </form>
     </div>
+  </div>
 </div>
