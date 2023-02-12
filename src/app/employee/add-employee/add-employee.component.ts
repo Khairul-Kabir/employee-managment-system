@@ -127,6 +127,13 @@ export class AddEmployeeComponent implements OnInit {
       password: ''
     }
     this.employeeStore.addEmployee(employeeInfo)
+    .subscribe({
+      next: (response:Employee)=>{
+      if(response!==undefined){
+         this.backToEmployee();
+      }
+    }
+  });
   }
 
   loadPreviewDataFromNGRX() {

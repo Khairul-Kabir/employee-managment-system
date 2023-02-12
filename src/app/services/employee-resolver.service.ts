@@ -10,6 +10,7 @@ import { EmployeeServiceService } from './employee-service.service';
 export class EmployeeResolverService implements Resolve<Employee[]> {
 
   constructor(private employeeServiceService : EmployeeServiceService) { }
+  
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
   Observable<Employee[]> | Promise<Employee[]> | Employee[] {
     return this.employeeServiceService.getAllEmployee();

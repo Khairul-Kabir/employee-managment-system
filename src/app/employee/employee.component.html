@@ -1,57 +1,98 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card" *ngIf="!isAddEmployeeComponentVisable">
-                <div class="text-center">
-                    <h1>Employee</h1>
-                </div>
-                <div class="text-left">
-                    <button class="btn btn-primary" (click)="openAddEmployee()">Add New</button> 
-                </div>
-
-                <table class="table table-striped">
-                    <thead class="thead-primary">
-                        <tr>
-                            <th scope="col">SL</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let employee of employeeList; let indexOfelement=index;">
-                            <th scope="row">{{ indexOfelement+1 }}</th>
-                            <td>
-                                {{ employee.firstName }} {{ employee.lastName }}
-                            </td>
-                            <td>{{ employee.phone}}</td>
-                            <td>{{ employee.email }}</td>
-                            <td>
-                                <button class="btn btn-warning">View</button>
-                                <button class="btn btn-danger ml-2">Delete</button> 
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="d-flex justify-content-between p-2">
-                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                        (pageChange)="refreshCountries()">
-                    </ngb-pagination>
-
-                    <select class="form-select" style="width: auto" [(ngModel)]="pageSize"
-                        (ngModelChange)="refreshCountries()">
-                        <option [ngValue]="5">5 items per page</option>
-                        <option [ngValue]="10">10 items per page</option>
-                        <option [ngValue]="15">15 items per page</option>
-                    </select>
-                </div>
+<div class="row">
+    <div class="col-12 col-sm-12">
+      <div class="card card-primary card-tabs">
+        <div class="card-header p-0 pt-1">
+          <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+            <li class="pt-2 px-3"><h3 class="card-title">EMS</h3></li>
+            <div class="text-right">
+                <li class="pt-3 px-3"><h5 class="card-title">Logout</h5></li>
             </div>
-            <div class="card">
-                <!-- *ngIf="isAddEmployeeComponentVisable" -->
-                <app-add-employee (backToEmployeeList)="backToEmployee($event)" *ngIf="isAddEmployeeComponentVisable"></app-add-employee> 
-            </div>
+            <li class="nav-item">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                  Logout
+                </a>
+              </li>
+          </ul>
         </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" *ngIf="!isAddEmployeeComponentVisable">
+                        <div class="wrapper">
+                            <div class="content-wrapper">
+                              <section class="content-header">
+                                <div class="container-fluid">
+                                  <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                      <h2>Employee List</h2>
+                                    </div>
+                                  </div>
+                                </div>
+                              </section>
+                          
+                              <section class="content">
+                                <div class="container-fluid">
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <div class="card">
+                                        <div class="card-header">
+                                          <button class="btn btn-secondary" (click)="openAddEmployee()">Add Employee</button> 
+                                          <!-- <h3 class="card-title">Employee Basic Information</h3> -->
+                                        </div>
+                                          <div class="card-body">
+                                              <table id="example2" class="table table-bordered table-hover">
+                                                  <thead>
+                                                      <tr><th>SL</th>
+                                                          <th>First Name</th>
+                                                          <th>Last Name</th>
+                                                          <th>Phone</th>
+                                                          <th>Email</th>
+                                                          <th class="text-right">Action</th>
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                      <tr *ngFor="let employee of employeeList; let indexOfelement=index;">
+                                                          <th scope="row">{{ indexOfelement+1 }}</th>
+                                                          <td>
+                                                              {{ employee.firstName }}
+                                                          </td>
+                                                          <td>
+                                                               {{ employee.lastName }}
+                                                          </td>
+                                                          <td>{{ employee.phone}}</td>
+                                                          <td>{{ employee.email }}</td>
+                                                          <td>
+                                                              <button class="btn btn-warning">View</button>
+                                                              <button class="btn btn-danger ml-2">Delete</button> 
+                                                          </td>
+                                                      </tr>
+                                                  </tbody>
+                                              </table>
+                                              <div class="d-flex justify-content-between p-2">
+                                                  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                                                      (pageChange)="refreshCountries()">
+                                                  </ngb-pagination>
+                              
+                                                  <select class="form-select" style="width: auto" [(ngModel)]="pageSize"
+                                                      (ngModelChange)="refreshCountries()">
+                                                      <option [ngValue]="5">5 items per page</option>
+                                                      <option [ngValue]="10">10 items per page</option>
+                                                      <option [ngValue]="15">15 items per page</option>
+                                                  </select>
+                                              </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </section>
+                            </div>
+                          </div>
+                    </div>
+                    <app-add-employee (backToEmployeeList)="backToEmployee($event)" *ngIf="isAddEmployeeComponentVisable"></app-add-employee> 
+                </div>
+            </div>            
+        </div>
+      </div>
     </div>
-</div>
+  </div>
