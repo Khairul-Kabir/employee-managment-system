@@ -8,6 +8,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 **For login**
 **User Name: kabir@gmail.com
 Password: 123456**
+
+## For any missing packages, you can use this: https://drive.google.com/file/d/16olRoo4gT20bdTLy8h4-gokIrVdHqCaN/view?usp=share_link
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
