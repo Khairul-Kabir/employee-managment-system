@@ -66,6 +66,6 @@ export class EmployeeServiceService {
 
   searchEmployeeUsingEmailAndPassword(employee: Employee): Observable<any> {
     var data = this.employee.find((emp) => emp.email === employee.email && emp.password ===  employee.password);
-    return of({ data }).pipe(delay(1000));
+    return of({ data }).pipe(delay(10));
   }
 }
