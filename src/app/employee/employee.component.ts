@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../models/employee.model';
 import { EmployeeStore } from '../store/employee.store';
 
@@ -17,6 +18,7 @@ export class EmployeeComponent implements OnInit {
 	countries?: Employee[];
 
 	constructor(
+		private activatedRoute: ActivatedRoute,
 		private employeeStore : EmployeeStore) {
 		this.refreshCountries();
 	}
@@ -24,7 +26,7 @@ export class EmployeeComponent implements OnInit {
 	ngOnInit(): void {
     	this.isAddEmployeeComponentVisable = false;
 		this.getAllEmployees();
-		this.collectionSize = this.employeeList.length;
+		//this.collectionSize = this.employeeList.length;
 	}
 	refreshCountries() {
 		// this.countries = this.employeeList.map((country, i) => ({ id: i + 1, ...country })).slice(
@@ -33,13 +35,10 @@ export class EmployeeComponent implements OnInit {
 		// );
   }
 	getAllEmployees(){
-		this.employeeStore.getAllEmployees()
-			.subscribe({
-				next: (response:Employee[])=>{
-				if(response!==undefined){
-					this.employeeList = response;
-				}
-			}
+		this.activatedRoute.data.subscribe(data =>console.log(data));
+
+		this.activatedRoute.data.subscribe((data) => {
+			this.employeeList = data.employee;
 		});
 	}
   
