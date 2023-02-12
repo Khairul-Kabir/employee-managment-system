@@ -64,10 +64,11 @@
   </div>
     <div class="col-md-6">
       <label for="inputPassword4" class="form-label">Phone</label>
-      <input type="text" class="form-control" id="inputPassword4" formControlName="phone" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.phone.errors}">
+      <input type="phone" class="form-control" id="inputPassword4" formControlName="phone" [ngClass]="{ 'is-invalid': submittedBasicForm && basicFormControl.phone.errors}">
       <div *ngIf="submittedBasicForm && basicFormControl.phone.errors" class="invalid-feedback">
         <div *ngIf="basicFormControl.phone.errors.required">Phone no is required</div>
         <div *ngIf="basicFormControl.phone.errors.minLength">Phone no minimum 11 digit</div>
+        <div *ngIf="basicFormControl.phone.errors.maxLength">Phone no maximum 11 digit</div>
     </div>
   </div>
     <div class="col-md-6">
