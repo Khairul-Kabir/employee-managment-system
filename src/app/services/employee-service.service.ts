@@ -88,7 +88,7 @@ export class EmployeeServiceService {
         {
           skillName:"Skill 11",
           yearOfExperience: 5,
-          skillLevel:"2"
+          skillLevel:"1"
         },
         
       ]

@@ -1,6 +1,4 @@
 import { Injectable } from "@angular/core";
-import { DialogService } from '@ngneat/dialog';
-import { HotToastService } from '@ngneat/hot-toast';
 import { Employee } from "../models/employee.model";
 import { ComponentStore } from '@ngrx/component-store';
 import { EmployeeServiceService } from "../services/employee-service.service";
@@ -17,7 +15,6 @@ export interface EmployeeState {
 export class EmployeeStore extends ComponentStore<EmployeeState>{
     constructor(
         private employeeService: EmployeeServiceService,
-        private toast: HotToastService,
         private router: Router,
         //private dialog: DialogService
         ) 
@@ -39,11 +36,6 @@ export class EmployeeStore extends ComponentStore<EmployeeState>{
         trigger$.pipe(
         switchMap(() =>
             this.employeeService.getAllEmployee().pipe(
-            this.toast.observe({
-                loading: 'Fetching...',
-                success: 'Contacts fetched!',
-                error: 'Could not fetch.',
-            }),
             tap((employee: Employee[]) => {
                 this.setEmployee(employee);
             }),
